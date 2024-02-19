@@ -1,5 +1,8 @@
 package BattleArena;
 
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
+
 public class Dragon { 
 	
 	private String name;
@@ -25,5 +28,12 @@ public class Dragon {
 	}
 	
 	
+	public void getDamage(int points) {
+		
+	}
 	
-}
+	public void attack(Character enemy) {
+		ThreadLocalRandom.current().nextInt(min, max + 1);
+        Random rand = new Random ();
+
+	}}
