@@ -1,5 +1,5 @@
 package BattleArena;
 
-public class Gnome {
+public class Gnome { //Lauras Aufgaben
 
 }

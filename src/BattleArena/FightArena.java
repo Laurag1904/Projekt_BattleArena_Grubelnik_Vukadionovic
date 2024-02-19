@@ -1,5 +1,5 @@
 package BattleArena;
 
-public class FightArena {
+public class FightArena { //Mal schauen
 
 }
