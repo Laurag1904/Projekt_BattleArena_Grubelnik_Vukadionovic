@@ -8,7 +8,7 @@ public class Gnome {
 	private String Name;
 	private int Lifepoints;
 	private boolean SpecialAbilityActive;
-	
+	private String enemy;
 	
 	public String getName() {
 		return Name;
@@ -40,10 +40,20 @@ public class Gnome {
         }
 	}
 	
-	public void attack () {
+	public int attackrandom () {
 		ThreadLocalRandom.current().nextInt(min, max + 1);
 		Random rand = new Random ();
 		
-	}
+		
+	} 
+	 public void attack(String enemy) {
+	        int attackrandom = this.attackrandom();
+	        System.out.println(this.Name + " greift " + enemy.getName() + " an mit Angriffswert " + angriffswert);
+
+	        // Schaden beim Gegner verursachen
+	        enemy.getDamage();
+	    }
+
+	 
 	
 }
