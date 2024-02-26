@@ -27,11 +27,17 @@ public class Dragon {
 		this.specialAbilityActive = specialAbilityActive;
 	}
 	
-	
 	public void getDamage(int points) {
-		
-	}
+        if (points > 0) {
+            this.lifePoints -= points;
+            if (this.lifePoints < 0) {
+                this.lifePoints = 0; // Lebenspunkte können nicht negativ sein
+            }
+            System.out.println(this.name + " hat " + points + " Schaden erlitten!");
+        }
+    }
 	
+
 	public void attack(Character enemy) {
 		ThreadLocalRandom.current().nextInt(min, max + 1);
         Random rand = new Random ();
