@@ -59,7 +59,8 @@ public abstract class FightCharecter {
 		this.specialAbilityActive = specialAbilityActive;
 	}
 	
-	public  void getDamage(int points) {
+	//Method which subtracts Point if gotten any Damage
+	public  void getDamage(int points) { 	
 		
 		if (extraLife - points >= 0) {
 			this.extraLife = this.extraLife - points;
@@ -81,11 +82,7 @@ public abstract class FightCharecter {
 			
 		}
 		
-		//TODO  toString
-		
-		
-	
-	
+
 	public abstract void attack();
 	
 	
