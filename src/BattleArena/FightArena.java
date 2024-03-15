@@ -15,6 +15,37 @@ public class FightArena {
 		this.winner = winner;
 	}
 
+	
+	public FightCharecter getPlayer1() {
+		return Player1;
+	}
+
+
+	public void setPlayer1(FightCharecter player1) {
+		Player1 = player1;
+	}
+
+
+	public FightCharecter getPlayer2() {
+		return Player2;
+	}
+
+
+	public void setPlayer2(FightCharecter player2) {
+		Player2 = player2;
+	}
+
+
+	public FightCharecter getWinner() {
+		return winner;
+	}
+
+
+	public void setWinner(FightCharecter winner) {
+		this.winner = winner;
+	}
+
+
 	/**
 	 * 
 	 * @return number between 1 and 2 to select random figther 1=figther1, 2=figther2
@@ -24,6 +55,9 @@ public class FightArena {
 	}
 
 
+	public void simulateCombat() {
+		
+	}
 /*
  * shows Stats (points,...)
  */
@@ -33,5 +67,7 @@ public class FightArena {
 }
 //TODO 
 //Method fight
+
+
 //print method
 //class that sets winner
