@@ -1,5 +1,6 @@
 package BattleArena;
 
+import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class FightArena { 
@@ -14,7 +15,6 @@ public class FightArena {
 		Player2 = player2;
 		this.winner = winner;
 	}
-
 	
 	public FightCharecter getPlayer1() {
 		return Player1;
@@ -55,19 +55,54 @@ public class FightArena {
 	}
 
 
-	public void simulateCombat() {
-		
-	}
 /*
  * shows Stats (points,...)
  */
 	public void printStats() {
 		System.out.println();
 	}
-}
+
 //TODO 
-//Method fight
+	public void fight(Scanner scanner) {
+		
+		FightCharecter attacker;
+		FightCharecter victim;
+		
+		do {
+			if() {
+				attacker = f1;
+				victim = f2;
+			}
+		}
+	}
 
+	public void simulateCombat(FightCharecter attacker, FightCharecter victim, Scanner scanner) {
+		System.out.println(attacker.getName()+ "ist an der Reihe");
+		System.out.println("Bitte geben Sie ihren Zug an(1= Angreifen, 2= faehigkeit verdoppeln");
+		int Input = ConsoleInput(scanner);
+		switch(Input) {
+		case 1: // angreifen
+			int value = attacker.attack();
+			victim.getDamage(value);
+			break;
+			
+		case 2: // aktivieren 
+			if(attacker.isSpecialAbilityActive()) {
+				attacker.specialAbilityDeactivated();
+			} else {
+				if(!attacker.specialAbilityActive()) {
+					simulateCombat(attacker, victim, scanner);
+				}
+			}break;
+		
+		default: 
+			System.err.println("Bitte geben Sie einen gultigen Wert ein!");
+			simulateCombat(attacker, victim, scanner);
+			break;
+		}
+		
+	}
 
+}
 //print method
 //class that sets winner
