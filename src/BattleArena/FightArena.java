@@ -102,6 +102,10 @@ public class FightArena {
 		}
 		
 	}
+	private int ConsoleInput(Scanner scanner) {
+		int b = scanner.nextInt();
+		return b;
+	}
 
 }
 //print method
