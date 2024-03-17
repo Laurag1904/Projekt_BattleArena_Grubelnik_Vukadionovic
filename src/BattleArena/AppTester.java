@@ -13,6 +13,11 @@ public class AppTester {
 		FightCharecter player1 = null;
 		FightCharecter player2 = null;
 		
+		/**
+		 * This code segment prompts two players to choose between Gnome and Dragon characters and enter their names.
+		 * Bases on their choices, character objects are created for each player.
+		 */
+		
 		for(int i = 1; i <= 2; i++) {
 			System.out.println("Spieler " + i +": Wähle deinen Spielcharakter");
 			System.out.println("1. Dragon");
