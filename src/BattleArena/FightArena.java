@@ -45,9 +45,11 @@ public class FightArena {
 		this.winner = winner;
 	}
 
-
+	/**
+	 * Methode fight that simulates a combat between two characters
+	 * @param scanner is an instance of the class, used for accepting user input
+	 */
 	public void fight(Scanner scanner) {
-		
 		FightCharecter attacker;
 		FightCharecter victim;
 		int randomPlayer = ThreadLocalRandom.current().nextInt(1,2+1);
@@ -76,7 +78,11 @@ public class FightArena {
 		System.out.println(this.getWinner().getName() + " hat gewonnen!");
 	}
 	
-	
+	/**
+	 * Methode FightCharecter determines the winner between to characters based
+	 * on their remaining lifepoints
+	 * @return statement returns the winner of the fight bases on the remaining liefepoints
+	 */
 	private FightCharecter winnerExist() {
 		if (Player1.getLifepoints() <= 0) {
 			return Player2;
@@ -86,6 +92,13 @@ public class FightArena {
 			return null;
 	}
 
+	/**
+	 * This code segment simulates a combat between two characters
+	 * where the attacker performas a action bases on users input
+	 * @param attacker represents character who is currently taking their turn to preform an action
+	 * @param victim represents the character who is the target of the action 
+	 * @param scanner used to receive input from the user 
+	 */
 	public void simulateCombat(FightCharecter attacker, FightCharecter victim, Scanner scanner) {
 		System.out.println();
 		System.out.println(attacker.getName()+ " ist an der Reihe");
@@ -114,6 +127,7 @@ public class FightArena {
 		}
 		
 	}
+	
 	private int ConsoleInput(Scanner scanner) {
 		int b = scanner.nextInt();
 		return b;
