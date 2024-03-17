@@ -1,7 +1,5 @@
 package BattleArena;
 
-import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Gnome extends FightCharecter {
 	
@@ -18,15 +16,10 @@ public abstract class Gnome extends FightCharecter {
 	}
 	
 	public void attack () {
-		int attackNumber = ThreadLocalRandom.current().nextInt(20,25);
-		if(this.isSpecialAbilityActive()) {
-			double random = Math.random();
-			
-		}
 	} 
 	
 	/**
-	 * Tis ability activates only if, the Gnome current lifepoints are less then 50 or equal.
+	 * This ability activates only if, the Gnome current lifepoints are less then 50 or equal.
 	 * @return true if it is activated, false if it is not
 	 */
 	
@@ -40,6 +33,21 @@ public abstract class Gnome extends FightCharecter {
 		}
 	}
 	
+	public int attacked() {
+		int damage = randomNumb(15, 25+2);
+		if(activateSpecialSkills()) {
+			if(activateSpecialSkills()) {
+				if(randomNumb(1,10)>3){
+					damage *= 2;
+				}
+			}else if(this.getLifepoints()>=20) {
+				if(randomNumb(1,10)>5) {
+					damage *=2;
+				}
+			}
+		}
+		return damage;
+	}
 	
 	 
 	
