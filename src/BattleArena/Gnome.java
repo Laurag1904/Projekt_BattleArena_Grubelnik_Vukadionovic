@@ -7,8 +7,6 @@ public class Gnome extends FightCharecter {
 		
 	}
 
-	
-	
 	/**
 	 * This ability activates only if, the Gnome current lifepoints are less then 50 or equal.
 	 * @return true if it is activated, false if it is not
@@ -23,6 +21,13 @@ public class Gnome extends FightCharecter {
 		}
 	}
 	
+	/**
+	 * Defines a method which calculates the damage by the character during an attack.
+	 * The damage is determined by a random number between 15 and 25.
+	 * If the character's special ability is active there are checks based on the character's remaining
+	 * lifepoints to double the damage.
+	 * At last the calculated damage value is returned.
+	 */
 	public int attack() {
 		int damage = randomNumb(15, 25+1);
 		if(activeAbility()) {
