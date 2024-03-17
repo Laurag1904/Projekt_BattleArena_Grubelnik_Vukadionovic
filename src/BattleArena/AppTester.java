@@ -10,27 +10,60 @@ public class AppTester {
 		int choice  = 0;
 		String name = "";
 		
-		FightCharecter p1 = null;
-		FightCharecter p2 = null;
+		FightCharecter player1 = null;
+		FightCharecter player2 = null;
 		
-		for(int i = 1; i<4; i++) {
-			System.out.println("Spieler: Wähle deinen Spielcharakter" +i);
+		for(int i = 1; i <= 2; i++) {
+			System.out.println("Spieler " + i +": Wähle deinen Spielcharakter");
 			System.out.println("1. Dragon");
-			System.out.println("2. Gnome");
-		}
+			System.out.println("2. Gnom");
+			System.out.println();
+			boolean fw = true;
 			
-		
-		System.out.println("Spieler: Gib deinen Spielnamen an!");
-		
-		do {
-			name = scanner.next();
-		} while(name.equals(" "));
-		if(p1 !=null) {
+			do {
+				choice = scanner.nextInt();
+				if(choice == 1|| choice == 2  ){
+					fw =false;
+				}} while(fw);
 			
+			System.out.println("Spieler " + i +": Gib deinen Spielnamen an:");
+			
+			
+			do {
+				 name = scanner.next();
+				
+				} while(name.equals(""));
+			
+				if(player1 != null) {
+					choice += 10;
+				}
+				switch (choice) {
+				case 1: 
+					player1 = new Dragon(name);
+					break;
+					
+				case 2:
+					player1 = new Gnome(name);
+					break;
+					
+				case 11: 
+					player2 = new Dragon(name);
+					break;
+					
+				case 12:
+					player2 = new Gnome(name);
+					break;
+				}
 		}
-	FightArena Arena = new FightArena ();
-	
-	
 		
+		FightArena arena = new FightArena(player1, player2);
+		
+		arena.fight(scanner);
+		
+		scanner.close();
+		
+		
+		
+	}
 
-}}
+}

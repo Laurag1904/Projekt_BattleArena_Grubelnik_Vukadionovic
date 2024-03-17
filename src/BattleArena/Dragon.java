@@ -1,8 +1,5 @@
 package BattleArena;
 
-import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
-
 public class Dragon extends FightCharecter{
 
 
@@ -17,18 +14,19 @@ public class Dragon extends FightCharecter{
 	/*
 	 * Malus at basevalue if specialAbility is active, random number between 5 and 10
 	 */
-	public void attack() {
-		int attackNumber = ThreadLocalRandom.current().nextInt(20,25);
+	public int attack() {
+		int attackNumber = randomNumb(20, 25+1);
 		if (this.isSpecialAbilityActive()== true) {
-			attackNumber = attackNumber- ThreadLocalRandom.current().nextInt(5,10);
+			attackNumber -= randomNumb(5, 10+1);
 		}
+		return attackNumber;
 	}
 
 
 	/**
 	 * If specialAbility is active +10 points
 	 */
-	public boolean specialAbilityActive() {
+	public boolean activeAbility() {
 		this.setExtraLife(getExtraLife()+10);
 		this.setSpecialAbilityActive(true);
 		return true;
@@ -40,13 +38,9 @@ public class Dragon extends FightCharecter{
 	/**
 	 * If specialAbility is deactivated subtract Bonus and Malus if points are greater than 0 else set Points as 0
 	 */
-	public boolean specialAbilityDeactivated() {
+	public boolean deactiveAbility() {
 		this.setSpecialAbilityActive(false);
-		if (this.getExtraLife() - 10 >= 0) {
-			this.setExtraLife(getExtraLife()-10);
-		}else {
-			this.setExtraLife(0);
-		}
+		this.setExtraLife(0);
 		return true;	
 	}
 }

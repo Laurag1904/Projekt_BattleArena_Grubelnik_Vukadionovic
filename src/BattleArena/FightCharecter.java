@@ -47,11 +47,6 @@ public abstract class FightCharecter {
 	}
 
 
-	private void setLifepoints(int lifepoints) {
-		this.lifepoints = lifepoints;
-	}
-
-
 	public boolean isSpecialAbilityActive() {
 		return specialAbilityActive;
 	}
@@ -71,52 +66,34 @@ public abstract class FightCharecter {
 	}
 	
 	//Method which subtracts Point if gotten any Damage
-	public  void getDamage(int points) { 	
-		
-		if (extraLife - points >= 0) {
-			this.extraLife = this.extraLife - points;
-			points = 0;
-		}else {
-			points = points - this.extraLife;
-			this.extraLife = 0;
-			
-		}	
+	public void getDamage(int points) { 
+		if(this.extraLife > 0) {
+			if (this.extraLife - points >= 0) {
+				this.extraLife = this.extraLife - points;
+				points = 0;
+			}else {
+				points = points - this.extraLife;
+				this.extraLife = 0;
+			}	
+		}
 		if (lifepoints - points >= 0) {
 			this.lifepoints = lifepoints - points;
 			points = 0;
 		}else {
-		lifepoints = 0; 
-	
-	
-			
+			lifepoints = 0; 
 		}
-			
-		}
-		
-
-	public abstract void attack();
-	
-	
-	public String toString() {
-		return "FightCharecter [name=" + name + ", lifepoints=" + lifepoints + ", specialAbilityActive="
-				+ specialAbilityActive + ", extraLife=" + extraLife + "]";
 	}
-
-
-
-	public abstract boolean specialAbilityActive ();
-	
-	public abstract boolean specialAbilityDeactivated();
-	
-	
-	
-	
-	
 		
-		
+	public String toString() {
+		return this.name + " hat " + (this.lifepoints + this.extraLife) + 
+				" leben + extraleben und der spezialeffekt ist: " + this.specialAbilityActive;
+	}
 	
 	
+	public abstract int attack();
 	
+	public abstract boolean activeAbility ();
 	
+	public abstract boolean deactiveAbility();
 	
 }

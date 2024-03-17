@@ -9,11 +9,11 @@ public class FightArena {
 	private FightCharecter Player2;
 	private FightCharecter winner;
 	
-	public FightArena(FightCharecter player1, FightCharecter player2, FightCharecter winner) {
+	public FightArena(FightCharecter player1, FightCharecter player2) {
 		super();
 		Player1 = player1;
 		Player2 = player2;
-		this.winner = winner;
+		this.winner = null;
 	}
 	
 	public FightCharecter getPlayer1() {
@@ -46,39 +46,50 @@ public class FightArena {
 	}
 
 
-	/**
-	 * 
-	 * @return number between 1 and 2 to select random figther 1=figther1, 2=figther2
-	 */
-	public int randomFighter(){
-		return ThreadLocalRandom.current().nextInt(1,2+1);
-	}
-
-
-/*
- * shows Stats (points,...)
- */
-	public void printStats() {
-		System.out.println();
-	}
-
-//TODO 
 	public void fight(Scanner scanner) {
 		
 		FightCharecter attacker;
 		FightCharecter victim;
+		int randomPlayer = ThreadLocalRandom.current().nextInt(1,2+1);
 		
 		do {
-			if() {
-				attacker = f1;
-				victim = f2;
+			if(randomPlayer == 1) {
+				attacker = Player1;
+				victim = Player2;
+				randomPlayer = 2;
+			}else if(randomPlayer == 2){
+				attacker = Player2;
+				victim = Player1;
+				randomPlayer = 1;
+			}else {
+				attacker = Player2;
+				victim = Player1;
+				System.err.println("FEHLER");
 			}
-		}
+			System.out.println(attacker);
+			System.out.println(victim);
+			simulateCombat(attacker, victim, scanner);
+			this.setWinner(winnerExist());
+			
+		}while(this.winnerExist() == null);
+		System.out.println("--- E N D E ---");
+		System.out.println(this.getWinner().getName() + " hat gewonnen!");
+	}
+	
+	
+	private FightCharecter winnerExist() {
+		if (Player1.getLifepoints() <= 0) {
+			return Player2;
+		} else if (Player2.getLifepoints() <= 0) {
+			return Player1;
+		} else
+			return null;
 	}
 
 	public void simulateCombat(FightCharecter attacker, FightCharecter victim, Scanner scanner) {
-		System.out.println(attacker.getName()+ "ist an der Reihe");
-		System.out.println("Bitte geben Sie ihren Zug an(1= Angreifen, 2= faehigkeit verdoppeln");
+		System.out.println();
+		System.out.println(attacker.getName()+ " ist an der Reihe");
+		System.out.println("Bitte geben Sie ihren Zug an(1= Angreifen, 2= faehigkeit)");
 		int Input = ConsoleInput(scanner);
 		switch(Input) {
 		case 1: // angreifen
@@ -88,15 +99,16 @@ public class FightArena {
 			
 		case 2: // aktivieren 
 			if(attacker.isSpecialAbilityActive()) {
-				attacker.specialAbilityDeactivated();
+				attacker.deactiveAbility();
 			} else {
-				if(!attacker.specialAbilityActive()) {
+				if(!attacker.activeAbility()) {
 					simulateCombat(attacker, victim, scanner);
 				}
-			}break;
+			}
+			break;
 		
 		default: 
-			System.err.println("Bitte geben Sie einen gultigen Wert ein!");
+			System.err.println("Bitte geben Sie einen gueltigen Wert ein!");
 			simulateCombat(attacker, victim, scanner);
 			break;
 		}
@@ -106,7 +118,8 @@ public class FightArena {
 		int b = scanner.nextInt();
 		return b;
 	}
-
+	
+	public void print() {
+		System.out.println();
+	}
 }
-//print method
-//class that sets winner
