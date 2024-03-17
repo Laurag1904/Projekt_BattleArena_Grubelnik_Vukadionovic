@@ -1,5 +1,7 @@
 package BattleArena;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public abstract class FightCharecter {
 
 	private String name;
@@ -57,6 +59,15 @@ public abstract class FightCharecter {
 
 	public void setSpecialAbilityActive(boolean specialAbilityActive) {
 		this.specialAbilityActive = specialAbilityActive;
+	}
+	
+	/**
+	 * generates a random number 
+	 * @param min and max 
+	 * @return random generated number
+	 */
+	public int randomNumb(int min, int max) {
+		return ThreadLocalRandom.current().nextInt(min, max);
 	}
 	
 	//Method which subtracts Point if gotten any Damage
